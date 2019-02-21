@@ -40,9 +40,9 @@ from six.moves import xrange  # pylint: disable=redefined-builtin
 import tensorflow as tf
 from tensorflow.contrib.training.python.training import hparam
 
-import cifar10
-import cifar10_model
-import cifar10_utils
+from . import cifar10
+from . import cifar10_model
+from . import cifar10_utils
 
 tf.logging.set_verbosity(tf.logging.INFO)
 
