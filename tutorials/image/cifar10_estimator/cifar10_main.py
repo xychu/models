@@ -180,7 +180,10 @@ def get_model_fn(num_gpus, variable_strategy, num_workers, is_chief):
       logging_hook = tf.train.LoggingTensorHook(
           tensors=tensors_to_log, every_n_iter=100)
 
-      train_hooks = [logging_hook, examples_sec_hook]
+      # profile hook
+      prof_hook = tf.train.ProfilerHook(save_steps=100, output_dir=params.job_dir)
+
+      train_hooks = [logging_hook, examples_sec_hook, prof_hook]
 
       optimizer = tf.train.MomentumOptimizer(
           learning_rate=learning_rate, momentum=momentum)
